@@ -1,7 +1,7 @@
 # Hardening Ledger: 2026-05-05-verifying-plan-completion
 
 **Plan:** [2026-05-05-verifying-plan-completion.md](./2026-05-05-verifying-plan-completion.md)
-**Status:** in-progress
+**Status:** stopped-by-user (proceeding to execution via `executing-plans`)
 **Verified at commit:** caaa48b9f39b268d5b27554055f735367ff2de66
 
 ---
