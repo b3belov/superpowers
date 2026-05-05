@@ -133,10 +133,10 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 
 ## Hardening Handoff
 
-After saving the plan, hand off to the hardening stage:
+After saving the plan, hand off to the hardening stage with the plan path:
 
 **"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Now hardening it before execution."**
 
-- **REQUIRED SUB-SKILL:** Use `superpowers:hardening-plans`.
+- **REQUIRED SUB-SKILL:** Use `superpowers:hardening-plans`. Pass the plan path explicitly so the ledger path can be derived.
 
 The hardening skill will iteratively review the plan, then hand off to execution. Do NOT invoke `executing-plans` or `subagent-driven-development` directly from here — `hardening-plans` is the next step.

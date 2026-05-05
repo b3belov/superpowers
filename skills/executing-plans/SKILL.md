@@ -16,10 +16,8 @@ Load plan, review critically, execute all tasks, report when complete.
 ## The Process
 
 ### Step 1: Load and Review Plan
-1. Read plan file
-2. **Precondition check:** Look for the hardening ledger at `docs/superpowers/plans/<plan-basename>-hardening.md`.
-   - If the ledger does not exist, OR its `Status:` line is neither `converged` nor `stopped-by-user`: STOP and invoke `superpowers:hardening-plans` first. Do not proceed to execution until hardening is complete.
-   - If the ledger exists with status `converged` or `stopped-by-user`: proceed.
+1. Read plan file (the plan path should be passed in by the invoker; otherwise pick the most recent in `docs/superpowers/plans/`).
+2. **Precondition check:** Verify a hardening ledger exists for this plan and is in a terminal state. See `superpowers:hardening-plans` § "Precondition for Execution Skills" for the canonical procedure (derive ledger path from plan path; require status `converged` or `stopped-by-user`; warn on tampering). If the precondition fails, STOP and invoke `superpowers:hardening-plans`.
 3. Review critically - identify any questions or concerns about the plan
 4. If concerns: Raise them with your human partner before starting
 5. If no concerns: Create TodoWrite and proceed

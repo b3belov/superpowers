@@ -41,7 +41,7 @@ digraph when_to_use {
 
 ## The Process
 
-**Precondition: hardening ledger present.** Before reading the plan, look for the ledger at `docs/superpowers/plans/<plan-basename>-hardening.md`. If it does not exist, OR its `Status:` line is neither `converged` nor `stopped-by-user`, STOP and invoke `superpowers:hardening-plans` first. Do not begin task dispatch until hardening is complete.
+**Precondition: hardening ledger present and verified.** Before reading the plan, run the canonical precondition check defined in `superpowers:hardening-plans` § "Precondition for Execution Skills" (derive ledger path from plan path; require status `converged` or `stopped-by-user`; warn on tampering). If it fails, STOP and invoke `superpowers:hardening-plans`. Do not begin task dispatch until hardening is complete.
 
 ```dot
 digraph process {
