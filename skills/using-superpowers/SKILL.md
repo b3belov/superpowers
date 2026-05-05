@@ -33,6 +33,8 @@ If CLAUDE.md, GEMINI.md, or AGENTS.md says "don't use TDD" and a skill says "alw
 
 **In Gemini CLI:** Skills activate via the `activate_skill` tool. Gemini loads skill metadata at session start and activates the full content on demand.
 
+**In VS Code Copilot Chat (GitHub Copilot):** Use the `read_file` tool on the skill's SKILL.md file path. The path is listed in the `<skills>` block of your system prompt. The file contains the full skill instructions — follow them directly.
+
 **In other environments:** Check your platform's documentation for how skills are loaded.
 
 ## Platform Adaptation
