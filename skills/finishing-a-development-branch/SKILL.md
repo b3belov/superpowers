@@ -35,7 +35,30 @@ Cannot proceed with merge/PR until tests pass.
 
 Stop. Don't proceed to Step 2.
 
-**If tests pass:** Continue to Step 2.
+**If tests pass:** Continue to Step 1b.
+
+### Step 1b: Verify Plan Completion (when invoked from a plan-execution context)
+
+A plan-execution context exists when this skill was invoked from `superpowers:executing-plans` or `superpowers:subagent-driven-development`. In that context, `superpowers:verifying-plan-completion` MUST have already produced a `clean` report and written its marker file.
+
+**Detection mechanism:** the verifying skill writes `.git/superpowers-plan-verification-clean` on a clean result. The file contains:
+
+```
+plan: <absolute plan path>
+head: <git rev-parse HEAD output at verification time>
+```
+
+**Step 1b procedure:**
+
+1. Read `.git/superpowers-plan-verification-clean`. If absent, this is not a plan-execution context (or verification has not run); skip Step 1b and proceed to Step 2.
+2. If present, parse the file. Verify the recorded `plan:` line is non-empty and the recorded `head:` SHA matches `git rev-parse HEAD` now.
+3. If the SHA does not match (commits have been made after verification), STOP and emit:
+
+   > Commits have been made since plan-completion verification. Re-invoke `superpowers:verifying-plan-completion` before finishing.
+
+   Do NOT auto-invoke the verifying skill here — the verifying skill is the caller's responsibility, and re-invoking from inside this skill would risk a cycle with the verifying skill's own auto-loop.
+4. If the marker is valid, continue to Step 2.
+5. After cleanup (Step 6) or after Discard, remove the marker file: `rm -f .git/superpowers-plan-verification-clean`.
 
 ### Step 2: Detect Environment
 
