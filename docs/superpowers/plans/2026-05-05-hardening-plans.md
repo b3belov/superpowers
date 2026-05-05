@@ -658,13 +658,17 @@ git commit -m "tests/hardening-plans: add artifact verification driver"
 **Files:**
 - (read-only verification across the changed skills)
 
-- [ ] **Step 1: Confirm the chain of references is intact**
+- [ ] **Step 1: Confirm the chain of references is intact (specific patterns, not generic substring)**
 
 Run:
 ```bash
-grep -l "hardening-plans" skills/writing-plans/SKILL.md skills/executing-plans/SKILL.md skills/subagent-driven-development/SKILL.md
+grep -q "Hardening Handoff" skills/writing-plans/SKILL.md && \
+grep -q "superpowers:hardening-plans" skills/writing-plans/SKILL.md && \
+grep -q "Precondition for Execution Skills" skills/executing-plans/SKILL.md && \
+grep -q "Precondition: hardening ledger present and verified" skills/subagent-driven-development/SKILL.md && \
+echo "OK: integration patterns present in all three skills"
 ```
-Expected: all three paths printed. If any is missing, the integration in Task 5/6/7 was not committed.
+Expected: prints `OK: integration patterns present in all three skills`. If the command exits non-zero, the integration in Task 5/6/7 was not committed correctly.
 
 - [ ] **Step 2: Confirm the new skill self-references are intact**
 
