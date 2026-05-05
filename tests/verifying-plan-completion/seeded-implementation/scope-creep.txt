@@ -1,0 +1,4 @@
+FIXTURE ONLY
+<!-- metadata below is test scaffolding, not verifier input -->
+unsolicited-feature: added a brand-new public capability not in the plan
+classification-hint: scope-creep

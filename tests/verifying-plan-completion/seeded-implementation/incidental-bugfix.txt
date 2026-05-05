@@ -1,0 +1,5 @@
+FIXTURE ONLY
+<!-- metadata below is test scaffolding, not verifier input -->
+incidental: typo fixed in adjacent area while implementing feature-a
+classification-hint: incidental-fix
+rationale-hint: small, same area as feature-a, no new public surface, no new behavior

@@ -1,0 +1,5 @@
+FIXTURE ONLY
+<!-- metadata below is test scaffolding, not verifier input -->
+refactor: extracted a constant in code touched by feature-a; covered by existing tests
+classification-hint: refactor
+rationale-hint: behavior unchanged; plan-touched file; no new public API
