@@ -30,6 +30,14 @@ For each task:
 3. Run verifications as specified
 4. Mark as completed
 
+### Step 2.5: Verify Plan Completion
+
+After all tasks are complete and individually verified, audit the whole plan against the implementation:
+
+- Announce: "I'm using the verifying-plan-completion skill to audit plan-vs-implementation."
+- **REQUIRED SUB-SKILL:** Use `superpowers:verifying-plan-completion`. Pass the plan path explicitly.
+- Do NOT proceed to Step 3 until the skill reports `STATUS: clean`. If the loop budget is exhausted, stop and surface the report to your human partner.
+
 ### Step 3: Complete Development
 
 After all tasks complete and verified:
