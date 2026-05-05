@@ -64,7 +64,7 @@ digraph process {
 
     "Read plan, extract all tasks with full text, note context, create TodoWrite" [shape=box];
     "More tasks remain?" [shape=diamond];
-    "Dispatch final code reviewer subagent for entire implementation" [shape=box];
+    "Invoke superpowers:verifying-plan-completion for the whole plan" [shape=box];
     "Use superpowers:finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
 
     "Read plan, extract all tasks with full text, note context, create TodoWrite" -> "Dispatch implementer subagent (./implementer-prompt.md)";
@@ -83,10 +83,12 @@ digraph process {
     "Code quality reviewer subagent approves?" -> "Mark task complete in TodoWrite" [label="yes"];
     "Mark task complete in TodoWrite" -> "More tasks remain?";
     "More tasks remain?" -> "Dispatch implementer subagent (./implementer-prompt.md)" [label="yes"];
-    "More tasks remain?" -> "Dispatch final code reviewer subagent for entire implementation" [label="no"];
-    "Dispatch final code reviewer subagent for entire implementation" -> "Use superpowers:finishing-a-development-branch";
+    "More tasks remain?" -> "Invoke superpowers:verifying-plan-completion for the whole plan" [label="no"];
+    "Invoke superpowers:verifying-plan-completion for the whole plan" -> "Use superpowers:finishing-a-development-branch";
 }
 ```
+
+> Per-task spec compliance is unchanged — `./spec-reviewer-prompt.md` still runs after each task. The skill `superpowers:verifying-plan-completion` runs once at the end and audits the whole plan.
 
 ## Model Selection
 
@@ -197,8 +199,8 @@ Code reviewer: ✅ Approved
 ...
 
 [After all tasks]
-[Dispatch final code-reviewer]
-Final reviewer: All requirements met, ready to merge
+[Invoke superpowers:verifying-plan-completion for the whole plan]
+Verifier: STATUS: clean — all plan items satisfied, no scope-creep
 
 Done!
 ```
