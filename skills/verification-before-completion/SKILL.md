@@ -47,7 +47,7 @@ Skip any step = lying, not verifying
 | Bug fixed | Test original symptom: passes | Code changed, assumed fixed |
 | Regression test works | Red-green cycle verified | Test passes once |
 | Agent completed | VCS diff shows changes | Agent reports "success" |
-| Requirements met | Line-by-line checklist | Tests passing |
+| Requirements met | Line-by-line checklist (or `superpowers:verifying-plan-completion` for full plans) | Tests passing |
 
 ## Red Flags - STOP
 
