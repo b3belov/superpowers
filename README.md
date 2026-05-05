@@ -151,6 +151,27 @@ already use it in another harness.
   copilot plugin install superpowers@superpowers-marketplace
   ```
 
+#### Repository-local install
+
+To install Superpowers into only the current repository, run the installer from
+the repository root:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/b3belov/superpowers/refs/heads/main/scripts/install-copilot-local.sh | bash
+```
+
+This writes Superpowers skills to `.github/skills/`, installs the bootstrap hook
+at `.github/hooks/superpowers.json`, and records managed files under
+`.github/superpowers/`. Start a new Copilot CLI session from the repository for
+the hook to inject the Superpowers bootstrap.
+
+To install from a specific ref or fork:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/b3belov/superpowers/refs/heads/main/scripts/install-copilot-local.sh \
+  | bash -s -- --github-repo b3belov/superpowers --ref v5.1.0
+```
+
 ## The Basic Workflow
 
 1. **brainstorming** - Activates before writing code. Refines rough ideas through questions, explores alternatives, presents design in sections for validation. Saves design document.
