@@ -131,22 +131,12 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 
 If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
 
-## Execution Handoff
+## Hardening Handoff
 
-After saving the plan, offer execution choice:
+After saving the plan, hand off to the hardening stage:
 
-**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Two execution options:**
+**"Plan complete and saved to `docs/superpowers/plans/<filename>.md`. Now hardening it before execution."**
 
-**1. Subagent-Driven (recommended)** - I dispatch a fresh subagent per task, review between tasks, fast iteration
+- **REQUIRED SUB-SKILL:** Use `superpowers:hardening-plans`.
 
-**2. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints
-
-**Which approach?"**
-
-**If Subagent-Driven chosen:**
-- **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development
-- Fresh subagent per task + two-stage review
-
-**If Inline Execution chosen:**
-- **REQUIRED SUB-SKILL:** Use superpowers:executing-plans
-- Batch execution with checkpoints for review
+The hardening skill will iteratively review the plan, then hand off to execution. Do NOT invoke `executing-plans` or `subagent-driven-development` directly from here — `hardening-plans` is the next step.
