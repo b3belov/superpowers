@@ -233,9 +233,6 @@ install_hooks() {
         "type": "command",
         "bash": "bash \".github/hooks/superpowers-run-hook.cmd\" superpowers-session-start",
         "powershell": "& \".github/hooks/superpowers-run-hook.cmd\" superpowers-session-start",
-        "env": {
-          "COPILOT_CLI": "1"
-        },
         "timeoutSec": 30
       }
     ]
