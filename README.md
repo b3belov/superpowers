@@ -78,6 +78,28 @@ Superpowers is available via the [official Codex plugin marketplace](https://git
 
 - Select `Install Plugin`.
 
+#### Repository-local install
+
+To install Superpowers into only the current repository, run the installer from
+the repository root:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/b3belov/superpowers/refs/heads/main/scripts/install-codex-local.sh | bash
+```
+
+This writes the Superpowers plugin bundle to `plugins/superpowers/`, installs a
+repo-local Codex marketplace at `.agents/plugins/marketplace.json`, and records
+managed files under `.agents/superpowers/`. Restart Codex or VS Code, open
+Plugins, install Superpowers from `Local Repo Plugins`, and start a new Codex
+thread from this repository.
+
+To install from a specific ref or fork:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/b3belov/superpowers/refs/heads/main/scripts/install-codex-local.sh \
+  | bash -s -- --github-repo b3belov/superpowers --ref v5.1.0
+```
+
 ### Codex App
 
 Superpowers is available via the [official Codex plugin marketplace](https://github.com/openai/plugins).
