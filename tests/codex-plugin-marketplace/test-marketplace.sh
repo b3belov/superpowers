@@ -23,8 +23,8 @@ plugins = marketplace.get("plugins", [])
 assert len(plugins) == 1, "expected exactly one marketplace plugin"
 plugin = plugins[0]
 
-assert marketplace["name"] == "superpowers-dev"
-assert marketplace["interface"]["displayName"] == "Superpowers Dev"
+assert marketplace["name"] == "superpowers"
+assert marketplace["interface"]["displayName"] == "Superpowers"
 assert plugin["name"] == "superpowers"
 assert plugin["source"] == {
     "source": "local",

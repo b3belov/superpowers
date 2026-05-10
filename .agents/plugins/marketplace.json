@@ -1,7 +1,7 @@
 {
-  "name": "superpowers-dev",
+  "name": "superpowers",
   "interface": {
-    "displayName": "Superpowers Dev"
+    "displayName": "Superpowers"
   },
   "plugins": [
     {
