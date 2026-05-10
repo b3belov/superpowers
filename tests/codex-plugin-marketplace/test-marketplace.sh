@@ -40,6 +40,20 @@ manifest_path = plugin_root / ".codex-plugin" / "plugin.json"
 with manifest_path.open() as f:
     manifest = json.load(f)
 
+for relative_path in [
+    ".codex-plugin",
+    "skills",
+    "assets",
+    "README.md",
+    "LICENSE",
+]:
+    bundled_path = plugin_root / relative_path
+    assert bundled_path.exists(), f"missing bundled path: {relative_path}"
+    assert not bundled_path.is_symlink(), f"bundled path must be a real copy: {relative_path}"
+
+skill_files = sorted((plugin_root / "skills").glob("*/SKILL.md"))
+assert len(skill_files) >= 10, "expected bundled Superpowers skills"
+
 assert manifest["name"] == plugin["name"]
 assert (plugin_root / "skills" / "using-superpowers" / "SKILL.md").is_file()
 assert (plugin_root / "assets" / "superpowers-small.svg").is_file()
